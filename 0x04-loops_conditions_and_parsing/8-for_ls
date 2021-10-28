@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# This script removes what is before the dash
+# and prints the list with that format
+LIST="$(ls)"
+for i in $LIST;
+do
+    echo "$i" | cut --complement -d "-" -f 1
+done
