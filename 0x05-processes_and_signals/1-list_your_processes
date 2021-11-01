@@ -2,4 +2,4 @@
 #displays lines containing the bash word
 #from task 1
 # shellcheck disable=SC2009
-ps -faux | grep bash
+$"ps" "faux"
