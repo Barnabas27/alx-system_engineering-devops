@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+#script to configure nginx so that page return an HTTP 404 error
+sudo apt-get update
+sudo apt-get -y install nginx
+sudo ufw allow 'Nginx HTTP'
+echo "Hello World!" > /var/www/html/index.html
+
+REDIRECT="\\\tif (\$request_filename ~ redirect_me)\
+ {\n\t\trewrite ^ https://www.youtube.com/watch?v=QH2-TGUlwu4/ permanent;\n\t}"
+
+echo "Ceci n'est pas une page" > /var/www/html/404_err.html
+
+ERRPAGE="\\\t#error page setup\n\terror_page 404 /404_err.html;\n\
+\tlocation = /404_err.html {\n\t\troot /var/www/html;\n\t\tinternal;\n\t}"
+
+sudo sed -i "/server_name _;/a $REDIRECT" /etc/nginx/sites-enabled/default 
+
+sudo sed -i "/server_name _;/a $ERRPAGE" /etc/nginx/sites-enabled/default
+
+sudo service nginx restart
