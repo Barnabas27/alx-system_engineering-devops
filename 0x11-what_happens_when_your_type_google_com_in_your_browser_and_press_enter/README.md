@@ -1,0 +1,1 @@
+# a link to a post on what happens when you type: wwww.google.com in the address bar and press enter.
