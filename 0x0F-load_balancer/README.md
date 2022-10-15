@@ -1,0 +1,1 @@
+# Load-Balancer project where the task is to write a script that automates the configuration of the HTTP header.
